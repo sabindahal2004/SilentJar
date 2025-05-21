@@ -125,7 +125,7 @@ export const COLORS: Colors = {
   SecondaryLightOrange: '#feecd4', // used for post background
   SecondaryLightPink: '#fed6d6', // used for post background
   SecondarySkinColor: '#f2ece2', // used for calender circle background
-  MoodColor: {
+  MoodColor: {  // used for mood category
     LightSkin: '#faf4e9',
     LightPink: '#fae4e5',
     LightBlue: '#edf2f8',
