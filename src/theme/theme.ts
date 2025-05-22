@@ -112,6 +112,7 @@ interface Colors {
   DarkButton: string;
   SecondarySkinColor: string;
   MoodColor: {};
+  OnboardingPurple:string;
 }
 
 export const COLORS: Colors = {
@@ -131,4 +132,5 @@ export const COLORS: Colors = {
     LightBlue: '#edf2f8',
     LightPurple: '#f7ebfa',
   },
+  OnboardingPurple:'#BA68C8',
 };
