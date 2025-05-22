@@ -9,7 +9,7 @@ const OnboardingItem = ({item}: {item: any}) => {
     <View style={[styles.container, {width}]}>
       <Image
         source={item.image}
-        style={[styles.image, {width, resizeMode: 'contain'}]}
+        style={[styles.image, {width: width * 0.95, resizeMode: 'contain'}]}
       />
       <View style={{flex: 0.3}}>
         <Text style={styles.title}>
