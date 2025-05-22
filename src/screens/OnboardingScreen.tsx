@@ -16,6 +16,7 @@ import {COLORS, FONTSIZE, FONTFAMILY} from '../theme/theme';
 import {ViewToken} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const OnboardingScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -86,6 +87,7 @@ const OnboardingScreen = () => {
             {currentIndex < OnboardingData.length - 1 && (
               <TouchableOpacity onPress={handleSkip} style={styles.skipButton}>
                 <Text style={styles.skipText}>Skip</Text>
+                <Icon name={'play-skip-back-outline'} size={17} color={COLORS.OnboardingPurple} />
               </TouchableOpacity>
             )}
 
@@ -93,6 +95,15 @@ const OnboardingScreen = () => {
               <Text style={styles.nextText}>
                 {currentIndex === OnboardingData.length - 1 ? 'Start' : 'Next'}
               </Text>
+              <Icon
+                name={
+                  currentIndex === OnboardingData.length - 1
+                    ? 'play'
+                    : 'chevron-forward-outline'
+                }
+                size={17}
+                color={'#fff'}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -125,12 +136,21 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     padding: 10,
+    flexDirection:'row',
+    justifyContent:'center',
+    alignItems:'center',
+    gap:2,
   },
   nextButton: {
     backgroundColor: COLORS.OnboardingPurple,
     paddingVertical: 10,
     paddingHorizontal: 24,
     borderRadius: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
+    elevation:0.5,
   },
   skipText: {
     color: COLORS.OnboardingPurple,
