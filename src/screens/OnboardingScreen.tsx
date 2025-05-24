@@ -37,7 +37,7 @@ const OnboardingScreen = () => {
   const completeOnboarding = async () => {
     try {
       await AsyncStorage.setItem('hasOnboarded', 'true');
-      navigation.replace('Home');
+      navigation.replace('BottomTab');
     } catch (err) {
       console.error('Error saving onboarding state:', err);
     }
@@ -60,7 +60,7 @@ const OnboardingScreen = () => {
       style={styles.gradient}>
       <SafeAreaView style={styles.container}>
         <View style={{flex: 3}}>
-          <FlatList
+          <Animated.FlatList
             data={OnboardingData}
             renderItem={({item}) => <OnboardingItem item={item} />}
             keyExtractor={item => item.id}
@@ -87,7 +87,11 @@ const OnboardingScreen = () => {
             {currentIndex < OnboardingData.length - 1 && (
               <TouchableOpacity onPress={handleSkip} style={styles.skipButton}>
                 <Text style={styles.skipText}>Skip</Text>
-                <Icon name={'play-skip-back-outline'} size={17} color={COLORS.OnboardingPurple} />
+                <Icon
+                  name={'play-skip-back-outline'}
+                  size={17}
+                  color={COLORS.OnboardingPurple}
+                />
               </TouchableOpacity>
             )}
 
@@ -136,10 +140,10 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     padding: 10,
-    flexDirection:'row',
-    justifyContent:'center',
-    alignItems:'center',
-    gap:2,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 2,
   },
   nextButton: {
     backgroundColor: COLORS.OnboardingPurple,
@@ -150,7 +154,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 2,
-    elevation:0.5,
+    elevation: 0.5,
   },
   skipText: {
     color: COLORS.OnboardingPurple,

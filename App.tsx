@@ -3,8 +3,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import OnboardingScreen from './src/screens/OnboardingScreen';
-import HomeScreen from './src/screens/HomeScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import BottomTab from './src/components/BottomTab';
+import AddPost from './src/screens/AddPost';
+import Button from './src/components/Button';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,15 +26,20 @@ export default function App() {
   if (loading) return null;
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={hasOnboarded ? 'Home' : 'Onboarding'}>
+      <Stack.Navigator initialRouteName={hasOnboarded ? 'BottomTab' : 'Onboarding'}>
         <Stack.Screen
           name="Onboarding"
           component={OnboardingScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
+          name="BottomTab"
+          component={BottomTab}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddPost"
+          component={AddPost}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

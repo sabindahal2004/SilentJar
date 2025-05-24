@@ -67,6 +67,7 @@ interface FontSize {
   size_24: number;
   size_28: number;
   size_30: number;
+  size_36: number;
 }
 
 export const FONTSIZE: FontSize = {
@@ -80,6 +81,7 @@ export const FONTSIZE: FontSize = {
   size_24: 24,
   size_28: 28,
   size_30: 30,
+  size_36: 36,
 };
 
 interface BorderRadius {
@@ -112,7 +114,7 @@ interface Colors {
   DarkButton: string;
   SecondarySkinColor: string;
   MoodColor: {};
-  OnboardingPurple:string;
+  OnboardingPurple: string;
 }
 
 export const COLORS: Colors = {
@@ -126,11 +128,12 @@ export const COLORS: Colors = {
   SecondaryLightOrange: '#feecd4', // used for post background
   SecondaryLightPink: '#fed6d6', // used for post background
   SecondarySkinColor: '#f2ece2', // used for calender circle background
-  MoodColor: {  // used for mood category
+  MoodColor: {
+    // used for mood category
     LightSkin: '#faf4e9',
     LightPink: '#fae4e5',
     LightBlue: '#edf2f8',
     LightPurple: '#f7ebfa',
   },
-  OnboardingPurple:'#BA68C8',
+  OnboardingPurple: '#BA68C8',
 };
