@@ -12,7 +12,8 @@ import HomeScreen from '../screens/HomeScreen';
 import CalanderScreen from '../screens/CalanderScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import AddPost from '../screens/AddPost';
-import {BORDERRADIUS, SPACING} from '../theme/theme';
+import {BORDERRADIUS, COLORS, SPACING} from '../theme/theme';
+import SettingScreen from '../screens/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,9 +22,17 @@ interface CustomAddButtonProps {
   isFocused: boolean;
 }
 
-const CustomAddButton: React.FC<CustomAddButtonProps> = ({onPress}) => (
+const CustomAddButton: React.FC<CustomAddButtonProps> = ({
+  onPress,
+  isFocused,
+}) => (
   <View style={styles.buttonWrapper}>
-    <View style={styles.whiteBackground} />
+    <View
+      style={[
+        styles.whiteBackground,
+        isFocused && {backgroundColor: COLORS.OnboardingPurple},
+      ]}
+    />
     <TouchableOpacity
       style={styles.customButton}
       onPress={onPress}
@@ -140,13 +149,13 @@ const BottomTab: React.FC = () => {
         }}
       />
       <Tab.Screen
-        name="dummy"
-        component={ProfileScreen}
+        name="Settings"
+        component={SettingScreen}
         options={{
           tabBarIcon: ({focused}) => (
             <IconContainer focused={focused}>
               <Icon
-                name="person-outline"
+                name="settings-outline"
                 size={22}
                 color={focused ? '#000' : '#fff'}
               />
@@ -165,7 +174,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -30,
     left: '50%',
-    transform: [{translateX: -30}],
+    transform: [{translateX: -35}],
     width: 70,
     height: 70,
     justifyContent: 'center',
@@ -173,9 +182,9 @@ const styles = StyleSheet.create({
   },
   whiteBackground: {
     position: 'absolute',
-    width: 70,
-    height: 70,
-    borderRadius: 35,
+    width: 65,
+    height: 65,
+    borderRadius: 50,
     backgroundColor: '#fff',
     zIndex: 1,
   },
