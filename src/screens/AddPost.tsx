@@ -3,10 +3,12 @@ import React from 'react';
 import MoodCategoryList from '../components/MoodCategoryList';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
+import AboutCategoryList from '../components/AboutCategoryList';
 
 const AddPost = () => {
   return (
     <SafeAreaView style={styles.container}>
+      {/* Greeting Section */}
       <View>
         <Text style={styles.title}>Dear Sabin!</Text>
 
@@ -14,6 +16,8 @@ const AddPost = () => {
       </View>
       {/* Mood Category Section */}
       <MoodCategoryList />
+      {/* About Category Section */}
+      <AboutCategoryList />
     </SafeAreaView>
   );
 };
@@ -22,17 +26,19 @@ export default AddPost;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: SPACING.space_28,
+    paddingTop: SPACING.space_15,
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal:SPACING.space_20,
+    paddingHorizontal: SPACING.space_20,
   },
   title: {
     fontFamily: FONTFAMILY.juana_bold,
     fontSize: FONTSIZE.size_30,
+    marginLeft: SPACING.space_10,
   },
   subtitle: {
-    fontFamily:FONTFAMILY.poppins_regular,
-    fontSize:FONTSIZE.size_14,
+    fontFamily: FONTFAMILY.poppins_regular,
+    fontSize: FONTSIZE.size_14,
+    marginLeft: SPACING.space_10,
   },
 });

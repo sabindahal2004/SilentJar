@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import React from 'react';
 import MoodCategoryData from '../data/MoodCategoryData';
 import MoodCategotyCard from './MoodCategotyCard';
@@ -22,10 +22,10 @@ export default MoodCategoryList;
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical:SPACING.space_18,
+    paddingVertical: SPACING.space_18,
   },
   categoryContainer: {
     justifyContent: 'center',
-    gap:SPACING.space_12,
+    gap: SPACING.space_12,
   },
 });
