@@ -6,7 +6,7 @@ import OnboardingScreen from './src/screens/OnboardingScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BottomTab from './src/components/BottomTab';
 import AddPost from './src/screens/AddPost';
-import Button from './src/components/Button';
+import Button from './src/components/CuatomButton';
 
 const Stack = createNativeStackNavigator();
 
