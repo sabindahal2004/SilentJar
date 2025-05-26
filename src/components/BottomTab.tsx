@@ -129,6 +129,9 @@ const BottomTab: React.FC = () => {
               isFocused={isAddFocused}
             />
           ),
+          tabBarStyle: {
+            display: 'none',
+          },
         }}
         listeners={{
           focus: () => setAddFocused(true),

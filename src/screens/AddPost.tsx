@@ -1,13 +1,22 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import MoodCategoryList from '../components/MoodCategoryList';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
+import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import AboutCategoryList from '../components/AboutCategoryList';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
 const AddPost = () => {
+  const navigation = useNavigation();
+  const handleClose = () => {
+    navigation.goBack();
+  };
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity style={styles.closeIcon} onPress={handleClose}>
+        <Icon name="close" color={COLORS.SecondaryBlackText} size={20} />
+      </TouchableOpacity>
       {/* Greeting Section */}
       <View>
         <Text style={styles.title}>Dear Sabin!</Text>
@@ -26,7 +35,7 @@ export default AddPost;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: SPACING.space_15,
+    paddingTop: SPACING.space_30,
     flex: 1,
     backgroundColor: '#fff',
     paddingHorizontal: SPACING.space_20,
@@ -40,5 +49,11 @@ const styles = StyleSheet.create({
     fontFamily: FONTFAMILY.poppins_regular,
     fontSize: FONTSIZE.size_14,
     marginLeft: SPACING.space_10,
+  },
+  closeIcon: {
+    position: 'absolute',
+    top: SPACING.space_30,
+    right: SPACING.space_30,
+    zIndex: 1,
   },
 });

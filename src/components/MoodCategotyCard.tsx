@@ -6,16 +6,20 @@ import {
   Dimensions,
 } from 'react-native';
 import React from 'react';
-import {BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
+import {
+  BORDERRADIUS,
+  COLORS,
+  FONTFAMILY,
+  FONTSIZE,
+  SPACING,
+} from '../theme/theme';
 
 const {width} = Dimensions.get('window');
 const CARD_WIDTH = width / 3 - 30;
 const MoodCategotyCard = ({item}: any) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={[styles.card, {backgroundColor: item.color}]}
-        activeOpacity={0.9}>
+      <TouchableOpacity style={[styles.card, {backgroundColor: item.color}]}>
         <Text style={styles.emoji}>{item.emoji}</Text>
         <Text style={styles.categoryTitle}>{item.title}</Text>
       </TouchableOpacity>
@@ -39,12 +43,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   categoryTitle: {
-    fontFamily:FONTFAMILY.poppins_medium,
-    fontSize:FONTSIZE.size_12,
-    marginTop:SPACING.space_15,
-    color:COLORS.SecondaryBlackText,
+    fontFamily: FONTFAMILY.poppins_medium,
+    fontSize: FONTSIZE.size_12,
+    marginTop: SPACING.space_15,
+    color: COLORS.SecondaryBlackText,
   },
   emoji: {
-    fontSize:FONTSIZE.size_24,
+    fontSize: FONTSIZE.size_24,
   },
 });
