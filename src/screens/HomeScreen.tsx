@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
     marginTop: SPACING.space_4,
   },
   greetingTitile: {
-    fontFamily: FONTFAMILY.poppins_semibold,
+    fontFamily:FONTFAMILY.juana_bold,
     fontSize: FONTSIZE.size_36,
   },
   greetingSubtitle: {
     fontFamily: FONTFAMILY.poppins_regular,
     color: COLORS.SecondaryBlackText,
     letterSpacing: 0.5,
-    marginTop: -SPACING.space_4,
+    marginTop:SPACING.space_4,
   },
 });
