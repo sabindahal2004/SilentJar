@@ -6,7 +6,7 @@ import OnboardingScreen from './src/screens/OnboardingScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import BottomTab from './src/components/BottomTab';
 import AddPost from './src/screens/AddPost';
-import Button from './src/components/CuatomButton';
+import WritingScreen from './src/screens/WritingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +40,11 @@ export default function App() {
         <Stack.Screen
           name="AddPost"
           component={AddPost}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Writing"
+          component={WritingScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

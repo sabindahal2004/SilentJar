@@ -1,18 +1,19 @@
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, ViewStyle, TextStyle, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE} from '../theme/theme';
+import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE } from '../theme/theme';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 
 interface CustomButtonProps {
   btnTitle: string;
   onPress?: () => void;
-  titleStyle?: object;
-  btnStyle?: object;
+  titleStyle?: TextStyle;
+  btnStyle?: ViewStyle;
   btnIcon?: React.ReactNode;
-  btnIconStyle?: object;
+  btnIconStyle?: ViewStyle;
 }
+
 const CustomButton: React.FC<CustomButtonProps> = ({
   btnTitle,
   onPress,
@@ -21,25 +22,36 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   btnIcon,
   btnIconStyle,
 }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<any>>();
+
   const handleNext = () => {
+    try {
+      navigation.navigate('Writing');
+    } catch (error) {
+      console.error('Navigation error:', error);
+    }
   };
+
   return (
     <TouchableOpacity
-      style={styles.customBtn}
+      style={[styles.customBtn, btnStyle]}
       activeOpacity={0.8}
-      onPress={handleNext}>
+      onPress={onPress || handleNext}>
       <LinearGradient
         colors={['#000', '#222', '#444', '#666']}
         style={styles.gradient}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}>
-        <Text style={styles.btnTitle}>{btnTitle}</Text>
-        <Icon
-          name="chevron-forward-outline"
-          size={20}
-          color={COLORS.PrimaryWiteBackground}
-        />
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}>
+        <Text style={[styles.btnTitle, titleStyle]}>{btnTitle}</Text>
+        {btnIcon ? (
+          <View style={btnIconStyle}>{btnIcon}</View>
+        ) : (
+          <Icon
+            name="chevron-forward-outline"
+            size={20}
+            color={COLORS.PrimaryWiteBackground}
+          />
+        )}
       </LinearGradient>
     </TouchableOpacity>
   );
@@ -53,12 +65,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingHorizontal: 10,
   },
   customBtn: {
     width: '30%',
-    height: 50,
+    height: 55,
     borderRadius: BORDERRADIUS.radius_15,
     alignSelf: 'center',
     marginTop: '40%',
