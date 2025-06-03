@@ -15,16 +15,26 @@ import {
   SPACING,
 } from '../theme/theme';
 import Icon from 'react-native-vector-icons/Ionicons';
+import usePostStore from '../store/PostStore';
+import {useNavigation} from '@react-navigation/native';
 
 const WritingScreen = () => {
+  const navigation = useNavigation();
   const [title, setTitle] = useState<string>('');
   const [subtitle, setSubTitle] = useState<string>('');
+
+  const postList = usePostStore();
+
+  const handleSave = () => {
+    postList.addPostTitle(title);
+    postList.addSubPostTitle(subtitle);
+  };
   return (
     <SafeAreaView style={styles.writingContainer}>
       <View style={styles.container}>
         {/* Header Section */}
         <View style={styles.headerBar}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleSave}>
             <Text
               style={{
                 fontFamily: FONTFAMILY.poppins_medium,

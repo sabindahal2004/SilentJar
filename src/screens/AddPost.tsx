@@ -6,7 +6,7 @@ import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import AboutCategoryList from '../components/AboutCategoryList';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
-import CustomButton from '../components/CuatomButton';
+import CustomButton from '../components/CustomButton';
 
 const AddPost = () => {
   const navigation = useNavigation();
