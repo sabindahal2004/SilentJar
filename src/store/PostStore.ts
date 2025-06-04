@@ -1,7 +1,7 @@
 import {create} from 'zustand';
 import {persist, createJSONStorage} from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Post } from '../types/Post';
+import {Post} from '../types/Post';
 
 interface PostStore {
   postsList: Post[];
@@ -49,7 +49,6 @@ const usePostStore = create<PostStore>()(
     {
       name: 'post-storage',
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: state => ({posts: state.postsList}),
     },
   ),
 );

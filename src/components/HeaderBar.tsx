@@ -23,7 +23,6 @@ export default HeaderBar;
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: '#fff',
-    height: '25%',
     width: '100%',
     flexDirection: 'row',
     alignItems:'center',
