@@ -1,31 +1,55 @@
 import {create} from 'zustand';
-import {createJSONStorage, persist} from 'zustand/middleware';
+import {persist, createJSONStorage} from 'zustand/middleware';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Post } from '../types/Post';
 
 interface PostStore {
-  postTitleList: string[];
-  addPostTitle: (title: string) => void;
-  postSubTitleList: string[];
-  addSubPostTitle: (subTitle: string) => void;
+  postsList: Post[];
+  addPost: (title: string, description: string) => void;
+  updatePost: (id: string, newTitle: string, newDescription: string) => void;
+  deletePost: (id: string) => void;
+  clearAllPosts: () => void;
 }
 
 const usePostStore = create<PostStore>()(
   persist(
-    set => ({
-      postTitleList: [],
-      addPostTitle: title =>
+    (set, _get) => ({
+      postsList: [],
+      addPost: (title, description) => {
         set(state => ({
-          postTitleList: [...state.postTitleList, title],
-        })),
-      postSubTitleList: [],
-      addSubPostTitle: subTitle =>
+          postsList: [
+            ...state.postsList,
+            {
+              id: Date.now().toString(),
+              title,
+              description,
+              createdAt: Date.now(),
+            },
+          ],
+        }));
+      },
+      updatePost: (id, newTitle, newDescription) => {
         set(state => ({
-          postTitleList: [...state.postSubTitleList, subTitle],
-        })),
+          postsList: state.postsList.map(post =>
+            post.id === id
+              ? {...post, title: newTitle, description: newDescription}
+              : post,
+          ),
+        }));
+      },
+      deletePost: id => {
+        set(state => ({
+          postsList: state.postsList.filter(post => post.id !== id),
+        }));
+      },
+      clearAllPosts: () => {
+        set({postsList: []});
+      },
     }),
     {
-      name: 'post-store',
+      name: 'post-storage',
       storage: createJSONStorage(() => AsyncStorage),
+      partialize: state => ({posts: state.postsList}),
     },
   ),
 );

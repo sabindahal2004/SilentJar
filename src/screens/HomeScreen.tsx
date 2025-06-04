@@ -3,6 +3,7 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import HeaderBar from '../components/HeaderBar';
 import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
+import PostList from '../components/PostList';
 
 const HomeScreen = () => {
   return (
@@ -17,6 +18,8 @@ const HomeScreen = () => {
             Don't let a bad day make you feel like you have a bad life
           </Text>
         </View>
+        {/* Post Section */}
+        <PostList />
       </View>
     </SafeAreaView>
   );

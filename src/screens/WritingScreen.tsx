@@ -16,7 +16,7 @@ import {
 } from '../theme/theme';
 import Icon from 'react-native-vector-icons/Ionicons';
 import usePostStore from '../store/PostStore';
-import {useNavigation} from '@react-navigation/native';
+import {CommonActions, useNavigation} from '@react-navigation/native';
 
 const WritingScreen = () => {
   const navigation = useNavigation();
@@ -26,8 +26,22 @@ const WritingScreen = () => {
   const postList = usePostStore();
 
   const handleSave = () => {
-    postList.addPostTitle(title);
-    postList.addSubPostTitle(subtitle);
+    if (title.trim() && subtitle.trim()) {
+      postList.addPost(title, subtitle);
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [
+            {
+              name: 'BottomTab',
+              params: {
+                screen: 'Home',
+              },
+            },
+          ],
+        }),
+      );
+    }
   };
   return (
     <SafeAreaView style={styles.writingContainer}>
