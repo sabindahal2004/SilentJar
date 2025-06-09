@@ -22,10 +22,10 @@ export default PostList;
 
 const styles = StyleSheet.create({
   listContainer: {
-    gap:SPACING.space_12,
+    gap: SPACING.space_12,
   },
-  container:{
-    marginTop:SPACING.space_36,
-    paddingHorizontal:SPACING.space_24,
-  }
+  container: {
+    marginTop: SPACING.space_36,
+    paddingHorizontal: SPACING.space_24,
+  },
 });
